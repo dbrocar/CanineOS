@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>Canine OS</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet" />
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background: #f4f2ed;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      font-family: 'Inter', sans-serif;
+      padding: 16px;
+    }
+
+    .app {
+      max-width: 400px;
+      width: 100%;
+      background: #ffffff;
+      border-radius: 36px;
+      padding: 24px 20px 20px;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.06);
+    }
+
+    /* ---- HEADER (distant / IMG_0674) ---- */
+    .header {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      margin-bottom: 16px;
+    }
+
+    .header .logo-row {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 4px;
+    }
+
+    .header .logo-row svg {
+      width: 44px;
+      height: 44px;
+      flex-shrink: 0;
+    }
+
+    .brand {
+      font-size: 28px;
+      font-weight: 700;
+      letter-spacing: -0.4px;
+      line-height: 1.1;
+    }
+    .brand .blue { color: #30752f; }
+    .brand .orange { color: #31811b; }
+
+    .tagline {
+      font-size: 13px;
+      font-weight: 500;
+      color: #3c3c3c;
+      background: #f0eee8;
+      padding: 5px 16px;
+      border-radius: 40px;
+      border: 1px solid #e0ddd5;
+      display: inline-block;
+      margin-top: 4px;
+      letter-spacing: -0.1px;
+    }
+
+    /* ---- IVICON (IMG_0675) ---- */
+    .ivicon-wrap {
+      display: flex;
+      justify-content: center;
+      margin: 6px 0 10px;
+    }
+
+    .ivicon-box {
+      background: #f8f6f1;
+      border-radius: 32px;
+      padding: 8px 18px 8px 14px;
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      border: 1px solid #e2dfd7;
+    }
+
+    .ivicon-box svg {
+      width: 48px;
+      height: 48px;
+      display: block;
+    }
+
+    .ivicon-label {
+      font-weight: 600;
+      font-size: 18px;
+      color: #2d2d2d;
+      letter-spacing: -0.2px;
+    }
+    .ivicon-label small {
+      font-weight: 400;
+      font-size: 13px;
+      color: #5e5e5e;
+      display: block;
+      margin-top: 2px;
+    }
+
+    /* ---- BOTTOM NAV (IMG_0676) ---- */
+    .nav {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 6px 12px;
+      margin-top: 20px;
+      padding-top: 14px;
+      border-top: 1px solid #eae7e0;
+    }
+
+    .nav-btn {
+      font-family: 'Inter', sans-serif;
+      font-weight: 600;
+      font-size: 13px;
+      text-transform: uppercase;
+      letter-spacing: 0.2px;
+      background: transparent;
+      border: none;
+      padding: 4px 0;
+      color: #3a3a3a;
+      cursor: default;
+      border-bottom: 2px solid transparent;
+      opacity: 0.8;
+    }
+
+    .nav-btn.active-blue {
+      color: #30752f;
+      border-bottom-color: #30752f;
+      opacity: 1;
+    }
+    .nav-btn.active-orange {
+      color: #31811b;
+      border-bottom-color: #31811b;
+      opacity: 1;
+    }
+    .nav-btn.active-green {
+      color: #96857;
+      border-bottom-color: #96857;
+      opacity: 1;
+    }
+
+    /* ---- PROFILE (IMG_0676) ---- */
+    .profile {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-top: 18px;
+      background: #f6f4ef;
+      padding: 8px 16px 8px 18px;
+      border-radius: 60px;
+      border: 1px solid #e2ded6;
+    }
+
+    .profile-left {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .profile-avatar {
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      background: #30752f;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-weight: 600;
+      font-size: 18px;
+    }
+
+    .profile-name {
+      font-weight: 600;
+      font-size: 15px;
+      color: #1f1f1f;
+    }
+
+    .profile-badge {
+      background: #eae5db;
+      padding: 3px 12px;
+      border-radius: 40px;
+      font-size: 11px;
+      font-weight: 500;
+      color: #2f2f2f;
+    }
+
+    .profile-arrow {
+      color: #7a7a7a;
+      font-size: 18px;
+      font-weight: 300;
+    }
+
+    /* ---- FONT HINT (IMG_0676) ---- */
+    .hint-wrap {
+      display: flex;
+      justify-content: center;
+      margin-top: 16px;
+    }
+
+    .hint {
+      font-size: 11px;
+      color: #5e5e5e;
+      background: #f3f1ec;
+      padding: 4px 14px;
+      border-radius: 40px;
+      border: 1px solid #ddd9d1;
+      letter-spacing: 0.2px;
+    }
+    .hint strong { font-weight: 600; color: #1f1f1f; }
+    .hint .c1 { color: #30752f; }
+    .hint .c2 { color: #31811b; }
+    .hint .c3 { color: #96857; }
+
+    .ui-note {
+      text-align: center;
+      font-size: 10px;
+      color: #6b6b6b;
+      margin-top: 12px;
+      padding-top: 10px;
+      border-top: 1px dashed #d7d2c8;
+      letter-spacing: 0.3px;
+    }
+  </style>
+</head>
+<body>
+
+<div class="app">
+
+  <!-- HEADER: IMG_0674 style -->
+  <div class="header">
+    <div class="logo-row">
+      <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="24" cy="24" r="22" fill="#30752f" opacity="0.12" />
+        <path d="M16 22C16 19.8 17.8 18 20 18C22.2 18 24 19.8 24 22C24 24.2 22.2 26 20 26C17.8 26 16 24.2 16 22Z" fill="#30752f" />
+        <path d="M30 22C30 19.8 31.8 18 34 18C36.2 18 38 19.8 38 22C38 24.2 36.2 26 34 26C31.8 26 30 24.2 30 22Z" fill="#31811b" />
+        <path d="M22 32C22 29.8 23.8 28 26 28C28.2 28 30 29.8 30 32C30 34.2 28.2 36 26 36C23.8 36 22 34.2 22 32Z" fill="#96857" opacity="0.8" />
+        <rect x="16" y="30" width="4" height="4" rx="1" fill="#30752f" />
+        <rect x="34" y="30" width="4" height="4" rx="1" fill="#31811b" />
+      </svg>
+      <span class="brand"><span class="blue">CANINE</span> <span class="orange">OS</span></span>
+    </div>
+    <div class="tagline">Total Health &amp; Nutrition Tracking System</div>
+  </div>
+
+  <!-- IVICON: IMG_0675 style -->
+  <div class="ivicon-wrap">
+    <div class="ivicon-box">
+      <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect x="4" y="4" width="40" height="40" rx="12" fill="#eae5db" stroke="#30752f" stroke-width="1.8" />
+        <circle cx="24" cy="18" r="8" fill="#30752f" opacity="0.9" />
+        <circle cx="18" cy="14" r="2.5" fill="white" />
+        <circle cx="30" cy="14" r="2.5" fill="white" />
+        <path d="M20 30L24 34L28 30" stroke="#31811b" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" />
+        <path d="M16 26L20 30L24 26L28 30L32 26" stroke="#96857" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" opacity="0.7" />
+        <circle cx="24" cy="24" r="16" stroke="#31811b" stroke-width="1.5" stroke-dasharray="2 3" opacity="0.4" />
+      </svg>
+      <span class="ivicon-label">Ivicon <small>128x128</small></span>
+    </div>
+  </div>
+
+  <!-- BOTTOM NAV: IMG_0676 -->
+  <div class="nav">
+    <span class="nav-btn active-blue">Home</span>
+    <span class="nav-btn">Plan</span>
+    <span class="nav-btn active-orange">Nutrition</span>
+    <span class="nav-btn">History</span>
+    <span class="nav-btn active-green">Profile</span>
+    <span class="nav-btn">Utilities</span>
+  </div>
+
+  <!-- PROFILE: IMG_0676 -->
+  <div class="profile">
+    <div class="profile-left">
+      <div class="profile-avatar">🐕</div>
+      <span class="profile-name">Rex · 4y</span>
+      <span class="profile-badge">🐾 healthy</span>
+    </div>
+    <span class="profile-arrow">›</span>
+  </div>
+
+  <!-- FONT HINT: IMG_0676 -->
+  <div class="hint-wrap">
+    <div class="hint">
+      <strong>Inter</strong> · <span class="c1">#30752</span> · <span class="c2">#31811</span> · <span class="c3">#96857</span>
+    </div>
+  </div>
+
+  <div class="ui-note">Main Logo &amp; UI Font: Inter</div>
+
+</div>
+
+</body>
+</html>
