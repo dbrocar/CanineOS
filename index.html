@@ -3,20 +3,27 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Canine OS</title>
+  <title>CANINE OS</title>
+  <!-- Google Font: Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+  
   <style>
     :root {
-      --bg-gradient-start: #eaf5ee;
-      --bg-gradient-end: #d4edda;
-      --primary-green: #2e7d52;
-      --primary-dark: #1b4d31;
-      --accent-light: #e0f2e9;
-      --card-bg: #ffffff;
-      --text-main: #1f2d24;
-      --text-muted: #4a6353;
-      --border-color: #c3e6cb;
-      --shadow: 0 8px 20px rgba(46, 125, 82, 0.08);
-      --radius: 16px;
+      /* Brand Color Palette from Specification */
+      --bg-gradient-start: #e2f1f8;
+      --bg-gradient-end: #cbe3f0;
+      --navy-dark: #0b2545;
+      --navy-card: #13325b;
+      --brand-blue: #0077e6;
+      --brand-orange: #f58220;
+      --brand-green: #38b000;
+      --text-dark: #0b2545;
+      --text-light: #ffffff;
+      --text-muted: #627d98;
+      --shadow: 0 10px 25px rgba(11, 37, 69, 0.12);
+      --radius: 20px;
     }
 
     * {
@@ -26,132 +33,254 @@
     }
 
     body {
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-      background: linear-gradient(135deg, var(--bg-gradient-start) 0%, var(--bg-gradient-end) 100%);
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      background: linear-gradient(180deg, var(--bg-gradient-start) 0%, var(--bg-gradient-end) 100%);
       background-attachment: fixed;
-      color: var(--text-main);
-      padding: 20px;
-      font-size: 1.25rem; /* Scaled for enhanced readability */
-      line-height: 1.5;
+      color: var(--text-dark);
+      padding: 20px 16px 100px 16px; /* Extra bottom padding for floating nav */
       min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
     }
 
-    .app-container {
-      max-width: 680px;
+    .app-wrapper {
+      width: 100%;
+      max-width: 600px;
+    }
+
+    /* Main Hero Graphic & Title Section */
+    .hero-header {
+      text-align: center;
+      padding: 20px 10px 30px 10px;
+    }
+
+    .logo-container {
+      width: 110px;
+      height: 110px;
+      margin: 0 auto 16px auto;
+      filter: drop-shadow(0 8px 16px rgba(0, 119, 230, 0.2));
+    }
+
+    .logo-container svg {
+      width: 100%;
+      height: 100%;
+    }
+
+    .brand-title {
+      font-size: 2.4rem;
+      font-weight: 900;
+      color: var(--navy-dark);
+      letter-spacing: -0.5px;
+      margin-bottom: 6px;
+      text-transform: uppercase;
+    }
+
+    .brand-subtitle {
+      font-size: 1.05rem;
+      font-weight: 600;
+      color: var(--brand-blue);
+      line-height: 1.4;
+      max-width: 400px;
       margin: 0 auto;
     }
 
-    /* Header Section */
-    header {
-      background: var(--card-bg);
-      border: 2px solid var(--border-color);
-      border-radius: var(--radius);
-      padding: 24px;
-      text-align: center;
-      margin-bottom: 24px;
-      box-shadow: var(--shadow);
-    }
-
-    header h1 {
-      color: var(--primary-green);
-      font-size: 2.2rem;
-      letter-spacing: 1px;
-      text-transform: uppercase;
-      font-weight: 800;
-      margin-bottom: 6px;
-    }
-
-    header p {
-      color: var(--text-muted);
-      font-size: 1.1rem;
-      font-weight: 600;
-    }
-
-    /* Content Cards */
+    /* Primary Container Cards */
     .card {
-      background: var(--card-bg);
+      background: #ffffff;
       border-radius: var(--radius);
-      border: 1px solid var(--border-color);
       padding: 24px;
       margin-bottom: 20px;
       box-shadow: var(--shadow);
+      border: 1px solid rgba(255, 255, 255, 0.8);
     }
 
     .card h2 {
-      color: var(--primary-green);
-      font-size: 1.5rem;
-      margin-bottom: 16px;
-      border-bottom: 2px solid var(--accent-light);
-      padding-bottom: 8px;
+      font-size: 1.35rem;
+      font-weight: 800;
+      color: var(--navy-dark);
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
     }
 
-    /* Custom Form & Interactive Elements */
-    .btn-primary {
-      display: inline-block;
-      width: 100%;
-      background-color: var(--primary-green);
-      color: #ffffff;
-      font-size: 1.25rem;
+    .card p {
+      font-size: 1.1rem;
+      color: var(--text-muted);
+      line-height: 1.6;
+    }
+
+    /* Bottom Navigation Bar Graphic */
+    .nav-bar {
+      position: fixed;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: calc(100% - 32px);
+      max-width: 580px;
+      background: var(--navy-dark);
+      border-radius: 24px;
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      padding: 10px 8px;
+      box-shadow: 0 12px 30px rgba(11, 37, 69, 0.35);
+      z-index: 1000;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .nav-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      background: transparent;
+      border: none;
+      color: rgba(255, 255, 255, 0.6);
+      font-family: 'Inter', sans-serif;
+      font-size: 0.7rem;
       font-weight: 700;
-      text-align: center;
+      letter-spacing: 0.5px;
+      cursor: pointer;
+      padding: 6px 8px;
+      border-radius: 12px;
+      transition: all 0.2s ease;
+      text-decoration: none;
+      width: 16%;
+    }
+
+    .nav-item svg {
+      width: 26px;
+      height: 26px;
+      margin-bottom: 4px;
+      fill: none;
+      stroke: currentColor;
+      stroke-width: 2;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    /* Active Tab Styling */
+    .nav-item.active {
+      color: var(--text-light);
+      background: rgba(255, 255, 255, 0.08);
+    }
+
+    .nav-item.active svg {
+      stroke: var(--brand-blue);
+    }
+
+    .nav-item:hover {
+      color: var(--text-light);
+    }
+
+    /* Quick Action Button */
+    .btn-action {
+      width: 100%;
+      background: linear-gradient(135deg, var(--brand-blue) 0%, #005bb5 100%);
+      color: #ffffff;
+      font-family: 'Inter', sans-serif;
+      font-size: 1.15rem;
+      font-weight: 700;
       padding: 16px;
       border: none;
-      border-radius: 12px;
+      border-radius: 14px;
       cursor: pointer;
-      transition: background-color 0.2s ease, transform 0.1s ease;
-      box-shadow: 0 4px 12px rgba(46, 125, 82, 0.2);
+      box-shadow: 0 6px 18px rgba(0, 119, 230, 0.3);
+      transition: transform 0.1s ease, box-shadow 0.2s ease;
+      margin-top: 10px;
     }
 
-    .btn-primary:active {
-      background-color: var(--primary-dark);
+    .btn-action:active {
       transform: scale(0.98);
     }
 
-    .badge {
-      display: inline-block;
-      background: var(--accent-light);
-      color: var(--primary-green);
-      font-weight: 700;
-      padding: 6px 12px;
-      border-radius: 20px;
-      font-size: 1rem;
-      margin-top: 8px;
-    }
-
-    /* Mobile adjustments */
-    @media (max-width: 480px) {
-      body {
-        padding: 12px;
+    @media (max-width: 400px) {
+      .nav-item {
+        font-size: 0.62rem;
+        padding: 4px;
       }
-      
-      header h1 {
-        font-size: 1.8rem;
+      .nav-item svg {
+        width: 22px;
+        height: 22px;
       }
     }
   </style>
 </head>
 <body>
 
-  <div class="app-container">
-    <!-- Main Branding Header -->
-    <header>
-      <h1>CANINE OS</h1>
-      <p>Modular Meal & Nutrition Management</p>
-      <span class="badge">System Active</span>
+  <div class="app-wrapper">
+    
+    <!-- Hero Branding Section -->
+    <header class="hero-header">
+      <div class="logo-container">
+        <!-- Embedded High-Res Graphic Logo SVG -->
+        <svg viewBox="0 0 128 128" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect width="128" height="128" rx="28" fill="#0B2545"/>
+          <!-- Orange Swoosh -->
+          <path d="M 32 88 C 22 72 26 48 42 36 C 48 31 56 28 64 28" stroke="#F58220" stroke-width="7" stroke-linecap="round"/>
+          <!-- Dog Head Silhouette -->
+          <path d="M 64 28 L 74 40 L 86 42 C 92 48 94 56 86 62 L 72 68 C 68 76 68 86 70 94" stroke="#0077E6" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
+          <!-- Internal Gear -->
+          <circle cx="60" cy="54" r="6" stroke="#0077E6" stroke-width="5"/>
+          <!-- Health Plus Sign -->
+          <path d="M 76 80 H 88 M 82 74 V 86" stroke="#38B000" stroke-width="5" stroke-linecap="round"/>
+        </svg>
+      </div>
+      
+      <h1 class="brand-title">CANINE OS</h1>
+      <p class="brand-subtitle">Total Health and Nutrition Tracking System for Your Dog</p>
     </header>
 
-    <!-- Content Module -->
+    <!-- Main Active Workspace -->
     <main>
       <section class="card">
-        <h2>Daily Prep & Rotation</h2>
-        <p>Your custom nutritional guidelines and tracking metrics will load here.</p>
-      </section>
-
-      <section class="card">
-        <button class="btn-primary" onclick="alert('Canine OS System Ready')">Update Daily Meal Log</button>
+        <h2>
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#0077e6" stroke-width="2.5"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+          System Status
+        </h2>
+        <p>Your nutrition engine is set to active. Select a module from the control bar below to switch views.</p>
+        <button class="btn-action">Log Daily Meal Prep</button>
       </section>
     </main>
+
   </div>
+
+  <!-- Bottom Interactive Control Bar (Matches Graphic Specification) -->
+  <nav class="nav-bar">
+    
+    <button class="nav-item active">
+      <svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+      HOME
+    </button>
+
+    <button class="nav-item">
+      <svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+      PLAN
+    </button>
+
+    <button class="nav-item">
+      <svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2zm0 18a8 8 0 1 1 8-8 8 8 0 0 1-8 8z"/><path d="M12 6v6l4 2"/></svg>
+      NUTRITION
+    </button>
+
+    <button class="nav-item">
+      <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+      HISTORY
+    </button>
+
+    <button class="nav-item">
+      <svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+      PROFILE
+    </button>
+
+    <button class="nav-item">
+      <svg viewBox="0 0 24 24"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
+      UTILITIES
+    </button>
+
+  </nav>
 
 </body>
 </html>
